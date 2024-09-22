@@ -1,3 +1,5 @@
+import exceptions.CalculadoraExceptions;
+
 public class App {
     public static void main(String[] args) throws Exception {
         // ------------------------------------------------------------------------------------------------------------
@@ -63,5 +65,42 @@ public class App {
         pulpo1.nadar();
         pulpo1.alimentarse();
         pulpo1.comunicarse();
+
+        System.out.println("\n");
+
+        // Excepciones
+        // Son eventos que interrumpen el flujo normal de la aplicación.
+        // Unchecked y checked
+
+        double numero1 = 10;
+        int numero2 = 0;
+        int resultado;
+
+        // System.out.println(numero1 / numero2); // Aqui nos mostrará error java debido a que no se puede dividir con 0, esto no nos dejará ejecutar lo que sigue.
+        
+        try {
+            // Existe un tema de casteo, el cual significa que no se pueden realizar operaciones con números de diferentes atributos, en caso de ser asi se debe castear los números, agregando el atributo al inicio del número a castear, for example:
+            resultado = (int) numero1 / numero2;
+            System.out.println(resultado);
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Esto va después de la excepción. \n");
+        }
+
+        // Manejo de excepciones.
+        Calculadora calculadora1 = new Calculadora();
+
+        try {
+            resultado = calculadora1.dividir((int) numero1, numero2);
+            System.out.println(resultado);
+        } catch (CalculadoraExceptions e) {
+            e.printStackTrace();
+        } finally {
+            // Es opcional utilizar el metodo finally el cual da la opción de agregar un mensaje al finalizar la ejecución o utilización del try_catch.
+            System.out.println("Hemos finalizado el calculo, ya sea exitoso o no.");
+        }
+
+        // Coleccion (set, list, map)
+        // Es un objeto que agrupa multiples elementos en una sola unidad [masomenos un array]
     }
 }
